@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
+gem 'bcrypt-ruby', '3.0.1'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork', '1.2.0'
+  gem 'spork', '0.9.2'
+  gem 'capybara'
+end
 
 
 # Gems used only for assets and not required

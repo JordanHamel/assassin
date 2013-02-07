@@ -1,0 +1,13 @@
+<h1>Create a New Game!</h1>
+
+<%= form_for(@game) do |f| %>
+
+  <%= f.label :rules %>
+  <%= f.text_field :rules %><br>
+
+  <%= f.label :organizer_id, "Organizer id" %>
+  <%= f.text_field :organizer_id %><br>
+
+  <%= f.submit "Create Game!" %>
+
+<% end %>
