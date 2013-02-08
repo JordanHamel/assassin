@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @current_player = current_player
   end
 
   def create

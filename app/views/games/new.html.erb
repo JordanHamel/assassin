@@ -1,12 +1,12 @@
 <h1>Create a New Game!</h1>
 
-<%= form_for(@game) do |f| %>
+<%= simple_form_for @game do |f| %>
 
-  <%= f.label :rules %>
-  <%= f.text_field :rules %><br>
-
-  <%= f.label :organizer_id, "Organizer id" %>
-  <%= f.text_field :organizer_id %><br>
+	<%= f.input :name, label: "Name of Game" %><br>
+	<%= f.input :start_time %><br>
+	<%= f.input :end_time %><br>
+  <%= f.input :rules %><br>
+  <%= f.hidden_field :organizer_id, :value => @current_player.id %>
 
   <%= f.submit "Create Game!" %>
 

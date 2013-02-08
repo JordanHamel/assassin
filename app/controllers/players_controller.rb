@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
     @player = Player.new(params[:player])
 
     if @player.save
+      sign_in(@player)
       flash[:success] = "You have successfully created your account!"
       redirect_to @player
     else
