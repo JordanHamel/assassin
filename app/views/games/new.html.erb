@@ -2,11 +2,12 @@
 
 <%= simple_form_for @game do |f| %>
 
+	<%= f.error_notification %>
+
 	<%= f.input :name, label: "Name of Game" %><br>
 	<%= f.input :start_time %><br>
 	<%= f.input :end_time %><br>
   <%= f.input :rules %><br>
-  <%= f.hidden_field :organizer_id, :value => @current_player.id %>
 
   <%= f.submit "Create Game!" %>
 

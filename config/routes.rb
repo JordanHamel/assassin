@@ -2,6 +2,7 @@ Assassin::Application.routes.draw do
   resources :players
   resources :games
   resource :session, only: [:new, :create, :destroy]
+  resources :player_games, only: [:new, :create, :destroy]
 
   root :to => "static_pages#home"
 

@@ -1,12 +1,14 @@
 class GamesController < ApplicationController
 
+  include GameHelper
+
   def new
-    @game = Game.new
-    @current_player = current_player
+    @game = current_player.organized_games.build
   end
 
   def create
-    @game = Game.new(params[:game])
+    @game = current_player.organized_games.build(params[:game])
+    @game.sign_up_code = create_sign_up_code
 
     if @game.save
       flash[:success] = "Your game has been created!"

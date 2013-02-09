@@ -1,21 +1,14 @@
 <h1>Create an Account:</h1>
 
-<%= form_for(@player) do |f| %>
+<%= simple_form_for @player do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br>
+  <%= f.error_notification %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-
-  <%= f.label :password_confirmation, "Confirmation"  %>
-  <%= f.password_field :password_confirmation %><br>
+  <%= f.input :first_name %><br>
+  <%= f.input :last_name %><br>
+  <%= f.input :email %><br>
+  <%= f.input :password %><br>
+  <%= f.input :password_confirmation, label: "Confirmation"  %><br>
 
   <%= f.submit "I'm ready!" %>
 

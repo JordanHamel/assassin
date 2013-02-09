@@ -2,7 +2,10 @@ class Player < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :organizer,
                   :email, :password, :password_confirmation
   has_secure_password
-  has_many :games
+  has_many :player_games
+  has_many :games, :through => :player_games
+
+  has_many :organized_games, :class_name => "Game", :foreign_key => :organizer_id
 
   before_save { |player| player.email = email.downcase }
   before_save :create_remember_token

@@ -1,6 +1,8 @@
 <h1><%= "Secret profile for: #{@player.first_name} #{@player.last_name}" %></h1>
 
-<%= link_to "Create a game!", new_game_path %>
+<%= link_to "Create a game!", new_game_path %><br>
+<%= link_to "Join a game!", new_player_game_path %>
+
 
 <p>Things to add to this page:</p>
 <ul>
