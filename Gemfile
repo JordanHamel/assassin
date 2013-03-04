@@ -4,8 +4,6 @@ gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'simple_form'
 gem 'devise'
-gem 'less-rails'
-gem 'therubyracer'
 
 group :production do
   gem 'pg'
