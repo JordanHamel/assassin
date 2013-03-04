@@ -2,18 +2,22 @@
 
   <div class="nav-bar-inner">
 
-    <span class="element"><%= link_to "Home", root_path %></span>
+    <ul class="menu">
+      <button><li class="element"><%= link_to "Home", root_path %></li></button>
+      <span class="divider"></span>
 
-    <ul>
-      <li><%= link_to "About", about_path %></li>
-      <% if signed_in? %>
-        <li><%= link_to "My Profile", current_player %></li>
-        <li><%= link_to "Sign Out", session_path, :method => :delete %></li>
-      <% else %>
-        <li><%= link_to "Sign in", new_session_path %></li>
-        <li><%= link_to "Sign up now!", new_player_path %></li>
-      <% end %>
-    </ul>
+      <ul class="menu-right">
+        <button><li><%= link_to "About", about_path %></li></button>
+        <% if signed_in? %>
+          <button><li><%= link_to "My Profile", current_player %></li></button>
+          <button><li><%= link_to "Sign Out", session_path, :method => :delete %></li></button>
+        <% else %>
+          <button><li><%= link_to "Sign in", new_session_path %></li></button>
+          <button><li><%= link_to "Sign up now!", new_player_path %></li></button>
+        <% end %>
+      </ul>
+
+    </div>
 
   </div>
 
