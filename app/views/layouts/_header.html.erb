@@ -1,19 +1,11 @@
-<header class = "navbar navbar-fixed-top navbar-inverse">
-	<div class = "navbar-inner">
-		<div class = "container-fluid">
-			<nav>
-				<ul class = "nav pull-right">
-					<li><%= link_to "About", about_path %></li>
-					<% if signed_in? %>
-						<li><%= link_to "My Profile", current_player %></li>
-						<li><%= link_to "Sign Out", session_path, :method => :delete %></li>
-					<% else %>
-						<li><%= link_to "Home", root_path %></li>
-						<li><%= link_to "Sign in", new_session_path %></li>
-						<li><%= link_to "Sign up now!", new_player_path %></li>
-					<% end %>
-				</ul>
-			</nav>
-		<div>
-	</div>
-</header>
+<ul = "nav pull-right">
+	<li><%= link_to "About", about_path %></li>
+	<% if signed_in? %>
+		<li><%= link_to "My Profile", current_player %></li>
+		<li><%= link_to "Sign Out", session_path, :method => :delete %></li>
+	<% else %>
+		<li><%= link_to "Home", root_path %></li>
+		<li><%= link_to "Sign in", new_session_path %></li>
+		<li><%= link_to "Sign up now!", new_player_path %></li>
+	<% end %>
+</ul>
