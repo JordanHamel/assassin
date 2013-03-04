@@ -243,5 +243,5 @@ Devise.setup do |config|
     :site => 'https://graph.facebook.com/',
     :authorize_path => '/oauth/authorize',
     :access_token_path => '/oauth/access_token',
-    :scope => %w(email)
+    :scope => "email"
 end
