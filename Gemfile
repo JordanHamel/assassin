@@ -4,6 +4,8 @@ gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'simple_form'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :production do
   gem 'pg'
