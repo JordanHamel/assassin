@@ -4,7 +4,7 @@
 
     <ul class="menu">
       <button><li class="element"><%= link_to "Home", root_path %></li></button>
-      <%= link_to "Sign in as User with Facebook", user_oauth_authorize_url(:facebook) %>
+      <%= link_to "Sign in as User with Facebook", user_omniauth_authorize_url(:facebook) %>
       <span class="divider"></span>
 
       <ul class="menu-right">
