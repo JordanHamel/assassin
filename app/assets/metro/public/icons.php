@@ -412,20 +412,20 @@
                     <br />
                     <div class="padding20 bg-color-pink fg-color-white">
                         <h2 class="fg-color-white">License info:</h2>
-                        <br />Icon Set:	Broccolidry -- http://dribbble.com/shots/587469-Free-16px-Broccolidryiconsaniconsetitisfullof-icons
-                        <br />License:	Aribitrary -- http://licence.visualidiot.com/
+                        <br />Icon Set:  Broccolidry -- http://dribbble.com/shots/587469-Free-16px-Broccolidryiconsaniconsetitisfullof-icons
+                        <br />License:  Aribitrary -- http://licence.visualidiot.com/
                         <br />
 
-                        <br />Icon Set:	Meteocons -- http://www.alessioatzeni.com/meteocons/
-                        <br />License:	Arbitrary -- http://www.alessioatzeni.com/meteocons/#about
+                        <br />Icon Set:  Meteocons -- http://www.alessioatzeni.com/meteocons/
+                        <br />License:  Arbitrary -- http://www.alessioatzeni.com/meteocons/#about
 
                         <br />
-                        <br />Icon Set:	IcoMoon - Free -- http://keyamoon.com/icomoon/
-                        <br />License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
+                        <br />Icon Set:  IcoMoon - Free -- http://keyamoon.com/icomoon/
+                        <br />License:  CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
 
                         <br />
-                        <br />Icon Set:	Iconic -- http://somerandomdude.com/work/iconic/
-                        <br />License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/us/
+                        <br />Icon Set:  Iconic -- http://somerandomdude.com/work/iconic/
+                        <br />License:  CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/us/
                     </div>
                 </div>
             </div>

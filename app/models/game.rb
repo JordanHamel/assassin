@@ -14,9 +14,9 @@ class Game < ActiveRecord::Base
   validates :sign_up_code, :presence => :true
 
   private
-  	def validate_start_time
-  		Time.now.utc < start_time.utc
-  	end
+    def validate_start_time
+      Time.now.utc < start_time.utc
+    end
 
     def validate_end_time
       start_time.utc < end_time.utc
