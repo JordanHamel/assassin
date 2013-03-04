@@ -4,17 +4,15 @@
 
     <ul class="menu">
       <button><li class="element"><%= link_to "Home", root_path %></li></button>
-      <%= link_to "Sign in as User with Facebook", user_omniauth_authorize_url(:facebook) %>
       <span class="divider"></span>
 
       <ul class="menu-right">
         <button><li><%= link_to "About", about_path %></li></button>
-        <% if signed_in? %>
-          <button><li><%= link_to "My Profile", '#' %></li></button>
-          <button><li><%= link_to "Sign Out", '#', :method => :delete %></li></button>
+        <% if current_user %>
+          <button><li><%= link_to "My Profile", user_url(current_user) %></li></button>
+          <button><li><%= link_to "Sign Out", destroy_user_session_url, :method => :delete %></li></button>
         <% else %>
-          <button><li><%= link_to "Sign in", '#' %></li></button>
-          <button><li><%= link_to "Sign up now!", '#' %></li></button>
+          <button><li><%= link_to "Sign In", user_omniauth_authorize_url(:facebook) %></li></button>
         <% end %>
       </ul>
 

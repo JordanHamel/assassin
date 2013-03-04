@@ -1,0 +1,2 @@
+class GameOrganizersController < ApplicationController
+end

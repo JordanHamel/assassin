@@ -7,6 +7,7 @@ Assassin::Application.routes.draw do
   # end
 
   resources :games
+  resources :users, only: [:show]
 
   root :to => "static_pages#home"
 

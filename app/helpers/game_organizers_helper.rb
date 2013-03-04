@@ -1,0 +1,2 @@
+module GameOrganizersHelper
+end

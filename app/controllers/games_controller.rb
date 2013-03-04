@@ -1,13 +1,16 @@
 class GamesController < ApplicationController
 
+  before_filter :authenticate_user!
+
   include GameHelper
 
   def new
-    @game = current_player.organized_games.build
+    @game = current_user.organized_games.build
   end
 
   def create
-    @game = current_player.organized_games.build(params[:game])
+    ### fix this!!
+    @game = current_user.organized_games.build(params[:game])
     @game.sign_up_code = create_sign_up_code
 
     if @game.save
