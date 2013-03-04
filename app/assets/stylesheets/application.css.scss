@@ -1,3 +1,8 @@
+/*
+*= require_self
+*= require_tree
+*/
+
 @import 'bootstrap';
 
 body {
@@ -6,10 +11,10 @@ body {
 	width: 850px;
 }
 
-h1 {
+.container-fluid .row-fluid {
 	text-align: center;
 }
-
+ 
 header {
 	width: 100%;
 }

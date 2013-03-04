@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'sqlite3'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'simple_form'
+
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
   gem 'rspec-rails'
@@ -14,6 +17,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'sqlite3'
 end
 
 
