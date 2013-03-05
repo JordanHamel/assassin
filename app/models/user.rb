@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :game_organizers
+  has_many :organized_games, through: :game_organizers
+
+  has_many :player_games
+  has_many :games, through: :player_games
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
