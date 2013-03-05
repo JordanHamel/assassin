@@ -2,3 +2,21 @@
 
 <p>The Rules:</p>
 <%= @game.rules %>
+<br>
+<p>The Players:</p>
+<% @game.players.each do |player| %>
+  <p><%= player.name %></p>
+<% end %>
+
+<% if current_user.current_target %>
+  <p>Your Current Target:</p>
+  <p><%= current_target_name(current_user.current_target) %></p>
+<% end %>
+
+<% if current_user.id == @game.organizer_id %>
+  <p><%= link_to "Generate targets", generate_user_targets_game_url(@game.id), method: :post %></p>
+<% end %>
+
+<% unless current_user.id == @game.organizer_id %>
+  <p><%= link_to "Leave this game", player_game_url, confirm: "Are you sure you want to leave this game?", method: :delete %></p>
+ <% end %>

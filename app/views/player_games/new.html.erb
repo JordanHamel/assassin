@@ -1,13 +1,11 @@
 <h1>Join a Game!</h1>
 
 <%= simple_form_for(@player_game) do |f| %>
-
   <% @player_game.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end %>
 
-  <%#= f.input :game_code %>
-  <%#= f.input :user_id, hidden, input_html is current_user.id %>
-  <%#= f.input :game_id, hidden, input_html gets passed in somehow %>
+  <%= f.input :game_code, :input_html => { :value => '' } %>
 
+  <%= f.submit %>
 <% end %>

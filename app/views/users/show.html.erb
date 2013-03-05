@@ -1,4 +1,9 @@
 <h1><%= "Secret profile for: #{@user.name}" %></h1>
 
-<%= link_to "Create a game!", new_game_path %><br>
-<%= link_to "Join a game!", new_player_game_path %>
+<p><%= link_to "Create a game!", new_game_url %></p>
+<p><%= link_to "Join a game!", new_player_game_url %></p>
+
+<p>Games I've Played In:</p>
+<% current_user.games.each do |game| %>
+  <p><%= link_to "#{game.name}", game_path(game) %></p>
+<% end %>
