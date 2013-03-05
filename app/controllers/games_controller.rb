@@ -31,6 +31,15 @@ class GamesController < ApplicationController
   end
 
   def destroy
+    game = Game.find(params[:id])
+
+    if game.destroy
+      flash[:notice] = "Your game has been successfully deleted."
+      redirect_to current_user
+    else
+      flash[:notice] = "We were unable to delete your game. Please try again."
+      render 'new'
+    end
   end
 
   def generate_user_targets
@@ -40,7 +49,7 @@ class GamesController < ApplicationController
     game_users = []
 
     game_user_id_objs.each do |game_user_id_obj|
-      #need to convert from active record object to id
+      #convert from active record object to id
       game_users << User.find(game_user_id_obj.user_id)
     end
 
