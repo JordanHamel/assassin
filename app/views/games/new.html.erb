@@ -2,7 +2,9 @@
 
 <%= simple_form_for @game do |f| %>
 
-  <%= f.error_notification %>
+  <% @game.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
 
   <%= f.input :name, label: "Name of Game" %><br>
   <%= f.input :start_time %><br>

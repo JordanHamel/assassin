@@ -9,16 +9,23 @@ class Game < ActiveRecord::Base
   validates :organizer_id, :presence => :true
   validates :name, :presence => :true, :length => { :maximum => 50 }
   validates :start_time, :presence => :true
-  validate :validate_start_time, :message => "Can't start a game in the past."
-  validate :validate_end_time, :message => "End time must be before start time."
+  validates :end_time, :presence => :true
+  validate :validate_start_time
+  validate :validate_end_time
   validates :sign_up_code, :presence => :true
 
   private
     def validate_start_time
-      Time.now.utc < start_time.utc
+      #game must be at least 2 days in the future
+      if start_time <= DateTime.current + 2.days
+        errors.add(:game, "must start at least 2 days in the future.")
+      end
     end
 
     def validate_end_time
-      start_time.utc < end_time.utc
+      #end time must be at least 1 week after start time
+      if end_time <= start_time + 7.days
+        errors.add(:game, "must be at least 1 week long")
+      end
     end
 end

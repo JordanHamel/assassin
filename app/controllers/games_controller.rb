@@ -5,18 +5,19 @@ class GamesController < ApplicationController
   include GameHelper
 
   def new
-    @game = current_user.organized_games.build
+    @game = Game.new
   end
 
   def create
-    ### fix this!!
-    @game = current_user.organized_games.build(params[:game])
+    @game = Game.new(params[:game])
+    @game.organizer_id = current_user.id
     @game.sign_up_code = create_sign_up_code
 
     if @game.save
       flash[:success] = "Your game has been created!"
       redirect_to @game
     else
+      flash[:error] = "Oops, that didn't work. Try again?"
       render 'new'
     end
   end
