@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+                  :name, :provider, :uid, :current_target
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -9,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :player_games
   has_many :games, through: :player_games
+
+  #validates_uniqueness of :game, scope: :where game.current == true
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

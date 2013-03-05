@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305013033) do
+ActiveRecord::Schema.define(:version => 20130305014024) do
 
   create_table "game_organizers", :force => true do |t|
     t.integer  "player_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130305013033) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "sign_up_code"
+    t.boolean  "current"
   end
 
   create_table "player_games", :force => true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130305013033) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.integer  "current_target"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :organizer_id, :rules, :name, :start_time, :end_time
+  attr_accessible :organizer_id, :rules, :name, :start_time, :end_time, :current
 
   has_one :game_organizer
   has_one :organizer, through: :game_organizer, source: :user
