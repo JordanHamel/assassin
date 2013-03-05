@@ -1,5 +1,5 @@
 class GameOrganizer < ActiveRecord::Base
-  attr_accesible :player_id, :game_id
+  attr_accessible :player_id, :game_id
 
   validates_presence_of :player_id, :game_id
 

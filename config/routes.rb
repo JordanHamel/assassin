@@ -1,15 +1,11 @@
 Assassin::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  root :to => "static_pages#home"
+  match '/about',    to: 'static_pages#about'
 
-  # devise_scope :user do
-  #   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
-  #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :games
   resources :users, only: [:show]
-
-  root :to => "static_pages#home"
-
-  match '/about',    to: 'static_pages#about'
+  resources :player_games, only: [:new, :create, :destroy]
+    
 end

@@ -10,6 +10,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(params[:game])
+    @game.current = false
     @game.organizer_id = current_user.id
     @game.sign_up_code = create_sign_up_code
 
