@@ -8,11 +8,6 @@
   <p><%= player.name %></p>
 <% end %>
 
-<% if current_user.current_target %>
-  <p>Your Current Target:</p>
-  <p><%= current_target_name(current_user.current_target) %></p>
-<% end %>
-
 <% if current_user.id == @game.organizer_id %>
   <p><%= link_to "Generate targets", generate_user_targets_game_url(@game.id), method: :post %></p>
 <% end %>

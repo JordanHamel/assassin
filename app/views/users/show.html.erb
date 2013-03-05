@@ -4,6 +4,15 @@
 <p><%= link_to "Join a game!", new_player_game_url %></p>
 
 <p>Games I've Played In:</p>
-<% current_user.games.each do |game| %>
+<% @user.games.each do |game| %>
   <p><%= link_to "#{game.name}", game_path(game) %></p>
 <% end %>
+
+<% if @user.current_target %>
+  <p>Your Current Target:</p>
+  <p><%= current_target_name(@user.current_target) %></p>
+
+  <p><%= link_to "Report kill for current target", kill_target_user_url, confirm: "Are you sure you want to report this kill? You can't undo this action.", method: :post %></p>
+<% end %>
+
+

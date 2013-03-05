@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305014024) do
+ActiveRecord::Schema.define(:version => 20130305230626) do
 
   create_table "game_organizers", :force => true do |t|
     t.integer  "player_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20130305014024) do
     t.datetime "updated_at",   :null => false
     t.string   "name"
     t.datetime "start_time"
-    t.datetime "end_time"
     t.string   "sign_up_code"
     t.boolean  "current"
   end

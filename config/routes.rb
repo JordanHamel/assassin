@@ -10,5 +10,9 @@ Assassin::Application.routes.draw do
     end
   end
   resources :player_games, only: [:new, :create, :destroy]
-  resources :users, only: [:show]    
+  resources :users, only: [:show] do
+    member do
+      post :kill_target
+    end
+  end  
 end
