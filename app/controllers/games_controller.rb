@@ -30,6 +30,22 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def edit
+    @game = Game.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+
+    if @game.update_attributes(params[:game])
+      flash[:notice] = "Your game has been successfully updated."
+      redirect_to @game
+    else
+      flash[:notice] = "We were unable to update your game. Try again?"
+      render 'new'
+    end
+  end
+
   def destroy
     game = Game.find(params[:id])
 

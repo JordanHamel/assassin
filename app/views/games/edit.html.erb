@@ -1,1 +1,14 @@
-<h1>Edit Game</h1>
+<h1>Edit <%= @game.name %></h1>
+
+<%= simple_form_for(@game) do |f| %>
+
+  <% @game.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  
+  <%= f.input :name %>
+  <%= f.input :rules %>
+
+  <%= f.submit %>
+
+<% end %>
