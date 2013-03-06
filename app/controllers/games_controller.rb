@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+  include ApplicationHelper
+
   before_filter :authenticate_user!
 
   include GameHelper
@@ -54,9 +56,7 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find(params[:id])
 
-    if game.destroy
-      destroy_current_targets(game)
-
+    if destroy_current_targets(game) && game.destroy
       flash[:notice] = "Your game has been successfully deleted."
       redirect_to current_user
     else
@@ -67,27 +67,14 @@ class GamesController < ApplicationController
 
   def generate_user_targets
     game = Game.find(params[:id])
-    users_arr = []
-    game_user_id_objs = PlayerGame.select(:user_id).joins(:user).where("game_id = ?", game.id)
-    game_users = []
+    players = game.players.shuffle!
 
-    game_user_id_objs.each do |game_user_id_obj|
-      #convert from active record object to id
-      game_users << User.find(game_user_id_obj.user_id)
-    end
-
-    game_users.each do |game_user|
-      users_arr << game_user
-    end
-
-    users_arr.shuffle!
-
-    users_arr.each_with_index do |user, i|
-      if i == users_arr.length - 1
-        user.current_target = users_arr[0].id
+    players.each_with_index do |user, i|
+      if i == players.length - 1
+        user.current_target = players[0].id
         user.save!
       else
-        user.current_target = users_arr[i+1].id
+        user.current_target = players[i+1].id
         user.save!
       end
     end

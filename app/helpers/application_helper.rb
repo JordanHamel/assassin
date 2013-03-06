@@ -4,16 +4,21 @@ module ApplicationHelper
   end
 
   def destroy_current_targets(game)
-    #if game gets destroyed, so must the current player targets
-    #get objects of users in game
-    game_user_id_objs = PlayerGame.select(:user_id).joins(:user).where("game_id = ?", game.id)
-    game_users = []
-
-    game_user_id_objs.each do |game_user_id_obj|
-      #convert from active record object to id
-      #set current target to nil
-      user = User.find(game_user_id_obj.user_id).current_target = nil
-      user.save!
+    Game.find(game.id).players.each do |player|
+      player.current_target = nil
+      player.save!
     end
+  end
+
+  def game_won?(game)
+    alive_players_count = 0
+
+    game.players.each do |player|
+      next if player.current_target == nil
+      alive_players_count += 1
+    end
+
+    return true if alive_players_count == 1
+    false
   end
 end

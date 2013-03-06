@@ -1,10 +1,10 @@
 class Game < ActiveRecord::Base
   attr_accessible :organizer_id, :rules, :name, :start_time, :current
 
-  has_one :game_organizer
+  has_one :game_organizer, dependent: :destroy
   has_one :organizer, through: :game_organizer, source: :user
 
-  has_many :player_games, inverse_of: :game
+  has_many :player_games, inverse_of: :game, dependent: :destroy
   has_many :players, through: :player_games, source: :user
 
   validates :rules, presence: :true, length: { :maximum => 5000 }
