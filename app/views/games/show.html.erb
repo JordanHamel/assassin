@@ -1,19 +1,26 @@
-<h1><%= @game.name %></h1>
+<% if @game.players.include?(current_user) %>
+  <h1><%= @game.name %></h1>
 
-<p>The Rules:</p>
-<%= @game.rules %>
-<br>
-<p>The Players:</p>
-<% @game.players.each do |player| %>
-  <p><%= player.name %></p>
+  <p>Start Date: <%= @game.start_time %></p>
+
+  <p>The Rules:</p>
+  <p><%= @game.rules %></p>
+
+  <p>Number of Players: <%= @game.players.count %></p>
+
+  <p>Contact the Organizer:</p>
+  <p><%= User.find(@game.organizer_id).name %></p>
+  <p><%= User.find(@game.organizer_id).email %></p>
+
+  <% if current_user.id == @game.organizer_id %>
+    <p><%= link_to "Generate Targets", generate_user_targets_game_url(@game.id), method: :post %></p>
+    <p><%= link_to "Edit Game", edit_game_url(@game.id) %></p>
+    <p><%= link_to "Delete Game", game_url(@game.id), confirm: "Are you sure you want to delete this game? You will not be able to reverse this action!", method: :delete %></p>
+  <% end %>
+
+  <% unless current_user.id == @game.organizer_id %>
+    <p><%= link_to "Leave this game", player_game_url, confirm: "Are you sure you want to leave this game?", method: :delete %></p>
+   <% end %>
+<% else %>
+  <h1>Sorry, you can't see this page!</h1>
 <% end %>
-
-<% if current_user.id == @game.organizer_id %>
-  <p><%= link_to "Generate Targets", generate_user_targets_game_url(@game.id), method: :post %></p>
-  <p><%= link_to "Edit Game", edit_game_url(@game.id) %></p>
-  <p><%= link_to "Delete Game", game_url(@game.id), confirm: "Are you sure you want to delete this game? You will not be able to reverse this action!", method: :delete %></p>
-<% end %>
-
-<% unless current_user.id == @game.organizer_id %>
-  <p><%= link_to "Leave this game", player_game_url, confirm: "Are you sure you want to leave this game?", method: :delete %></p>
- <% end %>

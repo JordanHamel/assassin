@@ -1,18 +1,22 @@
-<h1><%= "Secret profile for: #{@user.name}" %></h1>
+<% if @user == current_user %>
+  <h1><%= "Secret profile for: #{@user.name}" %></h1>
 
-<p><%= link_to "Create a game!", new_game_url %></p>
-<p><%= link_to "Join a game!", new_player_game_url %></p>
+  <p><%= link_to "Create a game!", new_game_url %></p>
+  <p><%= link_to "Join a game!", new_player_game_url %></p>
 
-<p>Games I've Played In:</p>
-<% @user.games.each do |game| %>
-  <p><%= link_to "#{game.name}", game_path(game) %></p>
-<% end %>
+  <p>Games I've Played In:</p>
+  <% @user.games.each do |game| %>
+    <p><%= link_to "#{game.name}", game_path(game) %></p>
+  <% end %>
 
-<% if @user.current_target %>
-  <p>Your Current Target:</p>
-  <p><%= current_target_name(@user.current_target) %></p>
+  <% if @user.current_target %>
+    <p>Your Current Target:</p>
+    <p><%= current_target_name(@user.current_target) %></p>
 
-  <p><%= link_to "Report kill for current target", kill_target_user_url, confirm: "Are you sure you want to report this kill? You can't undo this action.", method: :post %></p>
+    <p><%= link_to "Report kill for current target", kill_target_user_url, confirm: "Are you sure you want to report this kill? You can't undo this action.", method: :post %></p>
+  <% end %>
+<% else %>
+  <h1>Sorry, you can't see this page!</h1>
 <% end %>
 
 

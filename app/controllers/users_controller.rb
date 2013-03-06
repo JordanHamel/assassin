@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
     if user.save && target.save
       if game_won?(game)
+        user.current_target = nil
+        user.save
         flash[:notice] = "Congrats, you won the game!"
       else
         flash[:notice] = "You have successfully killed your target."
