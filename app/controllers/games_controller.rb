@@ -31,7 +31,12 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
+    if current_user.id == Game.find(params[:id]).organizer_id
+      @game = Game.find(params[:id])
+    else
+      flash[:notice] = "Sorry, you can't see that page!"
+      redirect_to Game.find(params[:id])
+    end
   end
 
   def update
