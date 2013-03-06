@@ -55,6 +55,8 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
 
     if game.destroy
+      destroy_current_targets(game)
+
       flash[:notice] = "Your game has been successfully deleted."
       redirect_to current_user
     else
