@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :organizer_id, :rules, :name, :start_time, :current
+  attr_accessible :organizer_id, :rules, :name, :start_time, :current, :time_zone
 
   has_one :game_organizer, dependent: :destroy
   has_one :organizer, through: :game_organizer, source: :user
@@ -7,12 +7,13 @@ class Game < ActiveRecord::Base
   has_many :player_games, inverse_of: :game, dependent: :destroy
   has_many :players, through: :player_games, source: :user
 
-  validates :rules, presence: :true, length: { :maximum => 5000 }
+  validates :rules, presence: true, length: { :maximum => 5000 }
   validates :organizer_id, presence: :true
-  validates :name, presence: :true, length: { :maximum => 50 }
-  validates :start_time, presence: :true
+  validates :name, presence: true, length: { :maximum => 50 }
+  validates :start_time, presence: true
   validate :validate_start_time
-  validates :sign_up_code, presence: :true
+  validates :sign_up_code, presence: true
+  validates :time_zone, presence: true
 
   private
     def validate_start_time

@@ -10,6 +10,7 @@
 
   <%= f.input :name, label: "Name of Game" %><br>
   <%= f.input :start_time %><br>
+  <p>* Time Zone <%= f.time_zone_select :time_zone %></p>
   <%= f.input :rules %><br>
 
   <%= f.submit "Create Game!" %>

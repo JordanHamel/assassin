@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305230626) do
+ActiveRecord::Schema.define(:version => 20130308183648) do
 
   create_table "game_organizers", :force => true do |t|
     t.integer  "player_id"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(:version => 20130305230626) do
   create_table "games", :force => true do |t|
     t.integer  "organizer_id"
     t.text     "rules"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "name"
     t.datetime "start_time"
     t.string   "sign_up_code"
     t.boolean  "current"
+    t.string   "time_zone",    :default => "UTC"
   end
 
   create_table "player_games", :force => true do |t|
