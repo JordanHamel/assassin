@@ -58,8 +58,5 @@ module Assassin
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    #default time zone
-    config.time_zone = 'Central Time (US & Canada)'
   end
 end
