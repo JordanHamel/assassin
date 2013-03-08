@@ -14,14 +14,14 @@ class PlayerGamesController < ApplicationController
 
     if @player_game.save
       flash[:notice] = "May the odds be ever in your favor."
-      redirect_to root_path
+      redirect_to game
     else
       render 'new'
     end
   end
 
   def destroy
-    @player_game = PlayerGame.find_by_game_id(params[:id])
+    @player_game = PlayerGame.find_by_game_id_and_user_id(current_user.id, params[:id])
 
     if @player_game.destroy
       flash[:notice] = "You've successfully left the game."
@@ -29,5 +29,12 @@ class PlayerGamesController < ApplicationController
     else
       redirect_to current_user
     end
+  end
+
+  def destroy_by_ajax_request
+    @player_game = PlayerGame.find_by_user_id_and_game_id(params[:player_id], params[:game_id])
+    p @player_game
+    @player_game.destroy
+    render :nothing => true
   end
 end

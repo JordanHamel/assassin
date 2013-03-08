@@ -8,10 +8,15 @@ Assassin::Application.routes.draw do
 
   resources :games, except: [:index] do
     member do
+      get :players_index
       post :generate_user_targets
     end
   end
-  resources :player_games, only: [:new, :create, :destroy]
+  resources :player_games, only: [:new, :create, :destroy] do
+    member do
+      delete :destroy_by_ajax_request
+    end
+  end
   resources :users, only: [:show] do
     member do
       post :kill_target

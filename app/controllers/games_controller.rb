@@ -82,4 +82,8 @@ class GamesController < ApplicationController
     redirect_to root_url
   end
 
+  def players_index
+    @game = Game.find(params[:id])
+    @players = @game.players
+  end
 end

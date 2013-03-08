@@ -1,0 +1,35 @@
+<% if current_user.id == @game.organizer_id %>
+  <h1>All Players:</h1>
+  <p>Note: Once you remove a player, you will not be able to re-add them. They will have to join again on their own.</p>
+
+  <br>
+
+  <% @players.each do |player| %>
+    <% next if player.id == @game.organizer_id %>
+    <p id="player-line-<%=player.id%>"><%= player.name %> <a href='#' class="remove-player" data-player-id="<%=player.id%>" data-game-id="<%=@game.id%>">Remove<a></p>
+  <% end %>
+
+  <br>
+
+  <p><%= link_to "Back to Game", game_url(@game) %></p>
+
+  <script type="text/javascript">
+    $(function() {
+      $('.remove-player').click(function() {
+        var playerId = $(this).attr('data-player-id');
+        var gameId = $(this).attr('data-game-id');
+
+        $.post(
+           '/player_games/' + playerId + '/destroy_by_ajax_request',
+           { player_id: playerId, game_id: gameId , "_method":"delete" },
+           function() {
+             $('#player-line-' + playerId).remove();
+           }
+         );
+      });
+    });
+  </script>
+
+<% else %>
+  <h1>Sorry, you can't see this page.</h1>
+<% end %>
