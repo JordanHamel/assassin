@@ -21,12 +21,16 @@ class PlayerGamesController < ApplicationController
   end
 
   def destroy
-    @player_game = PlayerGame.find_by_game_id_and_user_id(current_user.id, params[:id])
+    @player_game = PlayerGame.find_by_game_id_and_user_id(params[:id], current_user.id)
+    game = 
 
     if @player_game.destroy
+      reassign_target
       flash[:notice] = "You've successfully left the game."
-      redirect_to current_user
+      end
+        redirect_to current_user
     else
+      flash[:notice] = "Well, that didn't work! Care to try again?"
       redirect_to current_user
     end
   end
