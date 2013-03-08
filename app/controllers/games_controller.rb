@@ -11,6 +11,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    Time.zone = params[:game][:time_zone]
     @game = Game.new(params[:game])
     @game.current = false
     @game.organizer_id = current_user.id
@@ -30,6 +31,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    Time.zone = @game.time_zone
   end
 
   def edit

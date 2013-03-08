@@ -18,7 +18,9 @@ class Game < ActiveRecord::Base
   private
     def validate_start_time
       #game must be at least 2 days in the future
-      if start_time <= DateTime.current + 2.days
+      if start_time.utc <= DateTime.current.utc + 2.days
+        p start_time.utc
+        p DateTime.current.utc
         errors.add(:game, "must start at least 2 days in the future.")
       end
     end
